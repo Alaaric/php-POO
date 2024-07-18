@@ -1,11 +1,12 @@
 <?php
 
+namespace App;
 class Animal
 {
     public const CENTIMETERS_IN_METER = 100;
     public const SIZE_UNIT_CHANGE_LIMIT = 100;
     public const THREATENED_LEVELS = ['NE', 'DD', 'LC', 'NT', 'VU', 'EN', 'CR', 'EW', 'EX',];
-    
+
     private string $name;
     private float $size = 100;
     private bool $carnivorous = false;
@@ -18,36 +19,22 @@ class Animal
         $this->setPawNumber($pawNumber);
     }
 
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function getSize(): float
-    {
-        return $this->size;
-    }
-
-    public function setSize(float $size): void
-    {
-        if ($size < 0) {
-            $size = 0;
-        }
-
-        $this->size = $size;
-    }
-
-    public function getPawNumber(): int
-    {
-        return $this->pawNumber;
-    }
-
     private function setPawNumber(int $pawNumber): void
     {
         if ($pawNumber < 0) {
             $pawNumber = 0;
         }
         $this->pawNumber = $pawNumber;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getPawNumber(): int
+    {
+        return $this->pawNumber;
     }
 
     public function getThreatenedLevel(): string
@@ -95,5 +82,19 @@ class Animal
         } else {
             return ($this->getSize() / self::CENTIMETERS_IN_METER) . 'm';
         }
+    }
+
+    public function getSize(): float
+    {
+        return $this->size;
+    }
+
+    public function setSize(float $size): void
+    {
+        if ($size < 0) {
+            $size = 0;
+        }
+
+        $this->size = $size;
     }
 }
