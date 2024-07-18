@@ -2,6 +2,10 @@
 
 class Animal
 {
+    public const CENTIMETERS_IN_METER = 100;
+
+    public const SIZE_UNIT_CHANGE_LIMIT = 100;
+    public const THREATENED_LEVELS = ['NE', 'DD', 'LC', 'NT', 'VU', 'EN', 'CR', 'EW', 'EX'];
     private string $name;
     private float $size = 100;
     private bool $carnivorous = false;
@@ -14,30 +18,6 @@ class Animal
         $this->setPawNumber($pawNumber);
     }
 
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function getSize(): float
-    {
-        return $this->size;
-    }
-
-    public function setSize(float $size): void
-    {
-        if ($size < 0) {
-            $size = 0;
-        }
-
-        $this->size = $size;
-    }
-
-    public function getPawNumber(): int
-    {
-        return $this->pawNumber;
-    }
-
     private function setPawNumber(int $pawNumber): void
     {
         if ($pawNumber < 0) {
@@ -46,14 +26,30 @@ class Animal
         $this->pawNumber = $pawNumber;
     }
 
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getPawNumber(): int
+    {
+        return $this->pawNumber;
+    }
+
     public function getThreatenedLevel(): string
     {
         return $this->threatenedLevel;
     }
 
     public function setThreatenedLevel(string $threatenedLevel): void
+
     {
-        $this->threatenedLevel = $threatenedLevel;
+        if (in_Array($threatenedLevel, self::THREATENED_LEVELS)) {
+            $this->threatenedLevel = $threatenedLevel;
+        } else {
+
+            $this->threatenedLevel = 'NE';
+        }
     }
 
     public function isCarnivorous(): bool
@@ -80,5 +76,28 @@ class Animal
     public function isDangerous(): bool
     {
         return $this->size > 50 && $this->carnivorous === true;
+    }
+
+    public function getSizeWithUnit(): string
+    {
+        if ($this->getSize() < self::SIZE_UNIT_CHANGE_LIMIT) {
+            return $this->getSize() . 'cm';
+        } else {
+            return ($this->getSize() / self::CENTIMETERS_IN_METER) . 'm';
+        }
+    }
+
+    public function getSize(): float
+    {
+        return $this->size;
+    }
+
+    public function setSize(float $size): void
+    {
+        if ($size < 0) {
+            $size = 0;
+        }
+
+        $this->size = $size;
     }
 }
