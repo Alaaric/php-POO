@@ -2,15 +2,19 @@
 
 namespace App;
 
+use Exception;
+use RangeException;
+use UnexpectedValueException;
+
 class Animal
 {
     public const CENTIMETERS_IN_METER = 100;
     public const SIZE_UNIT_CHANGE_LIMIT = 100;
     public const THREATENED_LEVELS = ['NE', 'DD', 'LC', 'NT', 'VU', 'EN', 'CR', 'EW', 'EX',];
-    
+
     protected string $name;
-    private float $size = 100;
     protected bool $carnivorous = false;
+    private float $size = 100;
     private int $pawNumber;
     private string $threatenedLevel = 'NE';
 
@@ -18,30 +22,6 @@ class Animal
     {
         $this->name = $name;
         $this->setPawNumber($pawNumber);
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function getSize(): float
-    {
-        return $this->size;
-    }
-
-    public function setSize(float $size): void
-    {
-        if ($size < 0) {
-            $size = 0;
-        }
-
-        $this->size = $size;
-    }
-
-    public function getPawNumber(): int
-    {
-        return $this->pawNumber;
     }
 
     private function setPawNumber(int $pawNumber): void
@@ -52,6 +32,11 @@ class Animal
         $this->pawNumber = $pawNumber;
     }
 
+    public function getPawNumber(): int
+    {
+        return $this->pawNumber;
+    }
+
     public function getThreatenedLevel(): string
     {
         return $this->threatenedLevel;
@@ -59,9 +44,19 @@ class Animal
 
     public function setThreatenedLevel(string $threatenedLevel = 'NE'): void
     {
+        if ($threatenedLevel = 'EX') {
+            throw new \RuntimeException('Attention le ' . $this->getName() . "ne devrait pas être là si l'espèce est éteinte !");
+        }
         if (in_array($threatenedLevel, self::THREATENED_LEVELS)) {
             $this->threatenedLevel = $threatenedLevel;
+        } else {
+            throw new UnexpectedValueException('this is not a valid animal threatened level');
         }
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 
     public function isCarnivorous(): bool
@@ -97,5 +92,22 @@ class Animal
         } else {
             return ($this->getSize() / self::CENTIMETERS_IN_METER) . 'm';
         }
+    }
+
+    public function getSize(): float
+    {
+        return $this->size;
+    }
+
+    public function setSize(float $size): void
+    {
+        if ($size < 0) {
+            throw new Exception('The size should be a positive number');
+        }
+        if ($size > 10000) {
+            throw new RangeException('The ' . $this->name . ' is too large.');
+        }
+
+        $this->size = $size;
     }
 }

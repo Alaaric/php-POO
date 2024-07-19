@@ -3,6 +3,7 @@
 require '../vendor/autoload.php';
 
 /***************************************/
+
 /******** ⚠️ WORK HERE ONLY ⚠️ ***********/
 
 use App\Area;
@@ -17,12 +18,25 @@ use App\Snake;
 use App\Spider;
 
 $elephant = new Mammal('elephant');
-$elephant->setThreatenedLevel('LC');
 $elephant->setSize(400);
+try {
+    $elephant->setThreatenedLevel('LC');
+} catch (RuntimeException $e) {
+    $smallsErrors[] = $e->getMessage();
+} catch (UnexpectedValueException $e) {
+    $errors[] = $e->getMessage();
+}
 
 $lion = new Felid('lion');
-$lion->setSize(100);
 $lion->setThreatenedLevel('VU');
+try {
+    $lion->setSize(100);
+
+} catch (RangeException $e) {
+    $smallsErrors[] = $e->getMessage();
+} catch (Exception $e) {
+    $errors = $e->getMessage();
+}
 
 $tiger = new Felid('tiger');
 $tiger->setSize(150);
