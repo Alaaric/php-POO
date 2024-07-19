@@ -21,10 +21,10 @@ $elephant = new Mammal('elephant');
 $elephant->setSize(400);
 try {
     $elephant->setThreatenedLevel('LC');
-} catch (RuntimeException $e) {
-    $smallsErrors[] = $e->getMessage();
 } catch (UnexpectedValueException $e) {
     $errors[] = $e->getMessage();
+} catch (RuntimeException $e) {
+    $smallsErrors[] = $e->getMessage();
 }
 
 $lion = new Felid('lion');
