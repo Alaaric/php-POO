@@ -59,8 +59,15 @@ $animals = [$lion, $parrot, $elephant, $zebra, $alligator, $python, $scorpio, $t
 $savana = new Area('savana');
 $savana->addAnimal($lion);
 $savana->addAnimal($elephant);
+$savana->addAnimal($zebra);
+$savana->addAnimal($scorpio);
+$savana->addAnimal($alligator);
 $jungle = new Area('jungle');
 $jungle->addAnimal($parrot);
+$jungle->addAnimal($alligator);
+$jungle->addAnimal($bee);
+$jungle->addAnimal($tarantula);
+$jungle->addAnimal($python);
 
 $areas = [$savana, $jungle];
 
