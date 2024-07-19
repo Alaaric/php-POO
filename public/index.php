@@ -3,6 +3,7 @@
 require '../vendor/autoload.php';
 
 /***************************************/
+
 /******** ⚠️ WORK HERE ONLY ⚠️ ***********/
 
 use App\Animal\Bird;
@@ -19,15 +20,14 @@ use App\Area\Aquarium;
 use App\Animal\Arachnide;
 use App\Animal\Crocodilian;
 
-$abstractAnimal = new Animal('abstract', 0);
 
 $elephant = new Mammal('elephant');
 try {
     $elephant->setThreatenedLevel('LC');
 } catch (UnexpectedValueException $exception) {
-    $errors[]  = $exception->getMessage();
+    $errors[] = $exception->getMessage();
 } catch (RuntimeException $exception) {
-    $smallErrors[]  = $exception->getMessage();
+    $smallErrors[] = $exception->getMessage();
 }
 
 $elephant->setSize(400);
@@ -36,9 +36,9 @@ $lion = new Felid('lion');
 try {
     $lion->setSize(100);
 } catch (RangeException $exception) {
-    $smallErrors[]  = $exception->getMessage();
+    $smallErrors[] = $exception->getMessage();
 } catch (Exception $exception) {
-    $errors[]  = $exception->getMessage();
+    $errors[] = $exception->getMessage();
 }
 
 $lion->setThreatenedLevel('VU');
@@ -70,7 +70,7 @@ $scorpio->setCarnivorous(true);
 $bee = new Insect('bee');
 $bee->setSize(2);
 
-$animals = [$abstractAnimal, $elephant, $lion, $tiger, $zebra, $parrot, $alligator, $python, $scorpio, $tarentula, $bee];
+$animals = [$elephant, $lion, $tiger, $zebra, $parrot, $alligator, $python, $scorpio, $tarentula, $bee];
 
 try {
     $jungle = new Jungle('jungle');

@@ -7,15 +7,15 @@ use RangeException;
 use RuntimeException;
 use UnexpectedValueException;
 
-class Animal
+abstract class Animal
 {
     public const CENTIMETERS_IN_METER = 100;
     public const SIZE_UNIT_CHANGE_LIMIT = 100;
     public const THREATENED_LEVELS = ['NE', 'DD', 'LC', 'NT', 'VU', 'EN', 'CR', 'EW', 'EX',];
 
     protected string $name;
-    private float $size = 100;
     protected bool $carnivorous = false;
+    private float $size = 100;
     private int $pawNumber;
     private string $threatenedLevel = 'NE';
 
@@ -25,39 +25,17 @@ class Animal
         $this->setPawNumber($pawNumber);
     }
 
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function getSize(): float
-    {
-        return $this->size;
-    }
-
-    public function setSize(float $size): void
-    {
-        if ($size < 0) {
-            throw new Exception('The size should be a positive number');
-        }
-        if($size > 10000) {
-            throw new RangeException('The ' . $this->getName() . ' is too large');  
-        }
-
-        $this->size = $size;
-    }
-
-    public function getPawNumber(): int
-    {
-        return $this->pawNumber;
-    }
-
     private function setPawNumber(int $pawNumber): void
     {
         if ($pawNumber < 0) {
             $pawNumber = 0;
         }
         $this->pawNumber = $pawNumber;
+    }
+
+    public function getPawNumber(): int
+    {
+        return $this->pawNumber;
     }
 
     public function getThreatenedLevel(): string
@@ -71,11 +49,16 @@ class Animal
             throw new UnexpectedValueException('La menace est incorrecte');
         }
 
-        if($threatenedLevel == 'EX') {
+        if ($threatenedLevel == 'EX') {
             throw new RuntimeException('Le ' . $this->getName() . ' ne peut être là, cette espèce est éteinte');
         }
 
         $this->threatenedLevel = $threatenedLevel;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 
     public function isCarnivorous(): bool
@@ -111,5 +94,22 @@ class Animal
         } else {
             return ($this->getSize() / self::CENTIMETERS_IN_METER) . 'm';
         }
+    }
+
+    public function getSize(): float
+    {
+        return $this->size;
+    }
+
+    public function setSize(float $size): void
+    {
+        if ($size < 0) {
+            throw new Exception('The size should be a positive number');
+        }
+        if ($size > 10000) {
+            throw new RangeException('The ' . $this->getName() . ' is too large');
+        }
+
+        $this->size = $size;
     }
 }
