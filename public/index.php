@@ -3,6 +3,7 @@
 require '../vendor/autoload.php';
 
 /***************************************/
+
 /******** ⚠️ WORK HERE ONLY ⚠️ ***********/
 
 use App\Animal\Bird;
@@ -19,14 +20,16 @@ use App\Area\Aquarium;
 use App\Animal\Arachnide;
 use App\Animal\Crocodilian;
 use App\Animal\Fish;
+use App\Animal\Parrot;
+use App\Animal\Bat;
 
 $elephant = new Mammal('elephant');
 try {
     $elephant->setThreatenedLevel('LC');
 } catch (UnexpectedValueException $exception) {
-    $errors[]  = $exception->getMessage();
+    $errors[] = $exception->getMessage();
 } catch (RuntimeException $exception) {
-    $smallErrors[]  = $exception->getMessage();
+    $smallErrors[] = $exception->getMessage();
 }
 
 $elephant->setSize(400);
@@ -35,9 +38,9 @@ $lion = new Felid('lion');
 try {
     $lion->setSize(100);
 } catch (RangeException $exception) {
-    $smallErrors[]  = $exception->getMessage();
+    $smallErrors[] = $exception->getMessage();
 } catch (Exception $exception) {
-    $errors[]  = $exception->getMessage();
+    $errors[] = $exception->getMessage();
 }
 
 $lion->setThreatenedLevel('VU');
@@ -50,7 +53,7 @@ $zebra = new Equid('zebra');
 $zebra->setSize(120);
 $zebra->setThreatenedLevel('EN');
 
-$parrot = new Bird('parrot');
+$parrot = new Parrot('parrot');
 $parrot->setSize(30);
 
 $alligator = new Fish('shark');
@@ -69,7 +72,14 @@ $scorpio->setCarnivorous(true);
 $bee = new Insect('bee');
 $bee->setSize(2);
 
-$animals = [$elephant, $lion, $tiger, $zebra, $parrot, $alligator, $python, $scorpio, $tarentula, $bee];
+$bat = new Bat('bat');
+$bat->setSize(20);
+
+$alligator = new Crocodilian('alligator');
+
+$shark = new Fish('shark');
+
+$animals = [$elephant, $lion, $tiger, $zebra, $parrot, $alligator, $python, $scorpio, $tarentula, $bee, $bat, $shark];
 
 try {
     $jungle = new Jungle('jungle');
@@ -82,7 +92,7 @@ try {
     $desert->addAnimal($scorpio);
 
     $aquarium = new Aquarium('aquarium');
-    $aquarium->addAnimal($alligator);
+    $aquarium->addAnimal($shark);
 
     $areas = [$aquarium, $jungle, $desert];
 } catch (Exception $exception) {
