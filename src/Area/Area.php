@@ -22,10 +22,12 @@ abstract class Area
 
     public function addAnimal(Animal $animal)
     {
-        if ($this->isValid($animal)) {
-            throw new Exception('impossible d\'ajouter le ' . $animal->getName() . ' au ' . $this->getName());
+        if (!$this->isValid($animal)) {
+            throw new \Exception('impossible d\'ajouter le ' . $animal->getName() . ' au ' . $this->getName());
         }
+
         $this->animals[] = $animal;
+
     }
 
     abstract public function isValid(Animal $animal): bool;

@@ -7,6 +7,7 @@ require '../vendor/autoload.php';
 /******** ⚠️ WORK HERE ONLY ⚠️ ***********/
 
 use App\Animal\Bird;
+use App\Animal\Fish;
 use App\Area\Desert;
 use App\Area\Jungle;
 use App\Animal\Equid;
@@ -19,6 +20,8 @@ use App\Animal\Spider;
 use App\Area\Aquarium;
 use App\Animal\Arachnide;
 use App\Animal\Crocodilian;
+use App\Area\Box;
+use App\Area\cage;
 
 
 $elephant = new Mammal('elephant');
@@ -70,22 +73,34 @@ $scorpio->setCarnivorous(true);
 $bee = new Insect('bee');
 $bee->setSize(2);
 
-$animals = [$elephant, $lion, $tiger, $zebra, $parrot, $alligator, $python, $scorpio, $tarentula, $bee];
+$shark = new Fish('shark');
+
+$animals = [$elephant, $lion, $tiger, $zebra, $parrot, $alligator, $python, $scorpio, $tarentula, $bee, $shark];
 
 try {
     $jungle = new Jungle('jungle');
     $jungle->addAnimal($parrot);
-    $jungle->addAnimal($alligator);
-    $jungle->addAnimal($tarentula);
-    $jungle->addAnimal($tiger);
 
     $desert = new Desert('desert');
-    $desert->addAnimal($scorpio);
+    $desert->addAnimal($elephant);
+    $desert->addAnimal($zebra);
 
     $aquarium = new Aquarium('aquarium');
-    $aquarium->addAnimal($alligator);
+    $aquarium->addAnimal($shark);
 
-    $areas = [$aquarium, $jungle, $desert];
+    $box = new Box('box');
+    $box->addAnimal($tarentula);
+    $box->addAnimal($bee);
+    $box->addAnimal($scorpio);
+
+    $cage = new Cage('cage');
+    $cage->addAnimal($alligator);
+    $cage->addAnimal($tiger);
+    $cage->addAnimal($python);
+    $cage->addAnimal($lion);
+    $cage->addAnimal($tiger);
+
+    $areas = [$aquarium, $jungle, $desert, $box, $cage];
 } catch (Exception $exception) {
     $errors[] = $exception->getMessage();
 }

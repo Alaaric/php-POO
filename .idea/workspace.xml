@@ -4,13 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87fee488-a192-4601-a3cd-e4268761526f" name="Changes" comment="" />
+    <list default="true" id="87fee488-a192-4601-a3cd-e4268761526f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Area/Area.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Area/Area.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Area/Box.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Area/Box.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Area/cage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Area/cage.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="FormatOnSaveOptions">
@@ -19,7 +27,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/composer" />
+    </include_path>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -32,6 +44,7 @@
   "keyToString": {
     "PHP Script.index.php.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "poo9",
     "last_opened_file_path": "/home/alaric.henrot@local.groupepsih.com/projets/query",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.stylelint": "true",
@@ -66,6 +79,7 @@
       <workItem from="1721215802362" duration="1735000" />
       <workItem from="1721284183349" duration="20171000" />
       <workItem from="1721370583475" duration="17721000" />
+      <workItem from="1721629848156" duration="2538000" />
     </task>
     <servers />
   </component>

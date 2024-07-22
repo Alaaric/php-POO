@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Area;
 
 use App\Animal\Animal;
 use App\Area\Area;
